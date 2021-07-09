@@ -39,11 +39,11 @@ export default {
                username:[{required:true,message:"请输入用户名"}],
                password:[{required:true,message:"请输入密码"}]
            }
-            
         };
     },
     methods:{
         submitForm(form){
+            //$refs 一个对象，持有注册过 ref attribute 的所有 DOM 元素和组件实例
             this.$refs[form].validate(valid => {
                 if (valid) {
                     alert("请求登录")
