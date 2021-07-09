@@ -1,38 +1,43 @@
 <!-- 首页 -->
 <template>
-    <div class='home'>
-        <div class="labelList">
-            <table border="1"  class="labelTable">
+    <div class="home">
+        <div class='label'>
+            <div class="labelList">
+                <table border="1"  class="labelTable">
+                    <tr>
+                        <th></th>
+                        <th>用户名</th>
+                        <th>地址名称</th>
+                        <th>详细地址</th>
+                        <th>注册时间</th>
+                    </tr>
+                    <tr v-for="item in data" :key="item.id">
+                        <!-- v-model多个复选框的应用 -->
+                        <td><input type="checkbox" :value="item.userName" v-model="checkedNames"></td>
+                        <td>{{item.userName}}</td>
+                        <td>{{item.address_name}}</td>
+                        <td>{{item.address_content}}</td>
+                        <td>{{item.createTime}}</td>
+                    </tr>
+                </table>
+                <!-- 分页组件 -->
+                <Paging :total="total" :size="queryInfo.size" @update:size='queryInfo.size = $event' :index="queryInfo.index" @changeSize='changeSize' @lastPage='lastPage' @nextPage='nextPage'></Paging>
+            </div>
+            <div class="whiteBlock"></div>
+            <table class="checkNames">
                 <tr>
-                    <th></th>
-                    <th>用户名</th>
-                    <th>地址名称</th>
-                    <th>详细地址</th>
-                    <th>注册时间</th>
+                    <th>被您选中的用户</th>
                 </tr>
-                <tr v-for="item in data" :key="item.id">
-                    <!-- v-model多个复选框的应用 -->
-                    <td><input type="checkbox" :value="item.userName" v-model="checkedNames"></td>
-                    <td>{{item.userName}}</td>
-                    <td>{{item.address_name}}</td>
-                    <td>{{item.address_content}}</td>
-                    <td>{{item.createTime}}</td>
+                <tr v-for="(item,index) in checkedNames" :key="index">
+                    <td>{{item}}</td>
                 </tr>
             </table>
-            <!-- 分页组件 -->
-            <Paging :total="total" :size="queryInfo.size" @update:size='queryInfo.size = $event' :index="queryInfo.index" @changeSize='changeSize' @lastPage='lastPage' @nextPage='nextPage'></Paging>
         </div>
-        <div class="whiteBlock"></div>
-        <table class="checkNames">
-        <tr>
-            <th>被您选中的用户</th>
-        </tr>
-        <tr v-for="(item,index) in checkedNames" :key="index">
-            <td>{{item}}</td>
-        </tr>
-    </table>
-    
-    </div>
+        <ol>
+            <li><router-link to="/useComponents">go to "表单验证组件"</router-link></li>
+            <li><button @click="logout">清除token退出</button></li>
+        </ol> 
+    </div> 
 </template>
 
 <script>
@@ -97,12 +102,17 @@ methods: {
             this.queryInfo.index--
             this.getLabelList()
         }
+    },
+    // 退出登录
+    logout() {
+      window.sessionStorage.clear();
+      this.$router.push("/login");
     }
 }
 }
 </script>
 <style lang='scss' scoped>
-.home{
+.label{
     /*设置居中*/
   position: absolute;
   left: 50%;

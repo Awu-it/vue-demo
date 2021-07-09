@@ -23,6 +23,8 @@ export default {
       // console.log(res)
       if(res.code !== 1) return  this.$message.info(res.msg)
       this.$message.info(res.msg)
+      // 保存登录token
+      window.sessionStorage.setItem("token", res.data.token);
       // 跳转到首页
       this.$router.push("/home");
     },

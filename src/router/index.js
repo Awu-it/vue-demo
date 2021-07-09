@@ -6,6 +6,7 @@ Vue.use(VueRouter)
 
 const routes = [
   {
+    // 路由重定向
     path: '/',
     redirect: '/login'
   },
@@ -15,12 +16,14 @@ const routes = [
     component: () => import('../views/Hello.vue'),
     children:[
       {
-        path: '/login',
+        // hello/login    path: '/login' 以 / 开头的嵌套路径会被当作根路径。
+        path: 'login',
         name: 'Login',
-        component: Login
+        component: Login,
+        alias: '/login'   //别名
       },
       {
-        path: '/register',
+        path: 'register',
         name: 'Register',
         component: () => import('../views/Register.vue')
       }
@@ -29,7 +32,7 @@ const routes = [
   {
     path: '/home',
     name: 'Home',
-    component: () => import('../views/Home.vue')
+    component: () => import('../views/Home.vue'),
   },
   {
     path: '/useComponents',
@@ -43,6 +46,17 @@ const router = new VueRouter({
   // mode: 'history',
   // base: process.env.BASE_URL,
   routes
+})
+
+// 为路由对象，添加 beforeEach 导航守卫
+router.beforeEach((to, from, next) => {
+  // 如果访问的登录页，直接放行
+  if (to.path === '/login') return next();
+  // 从 sessionStorage 中获取到 保存的 token 值
+  const token = window.sessionStorage.getItem('token');
+  // 没有token，强制跳转到登录页
+  if (!token) return next('/login');
+  next();
 })
 
 export default router

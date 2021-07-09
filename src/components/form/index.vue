@@ -51,7 +51,7 @@ export default {
                     alert("校验失败")
                 }
             })
-        }
+        },
     }
 }
 </script>
