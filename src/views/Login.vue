@@ -20,7 +20,7 @@ export default {
           "login",
           userForm
         )
-      console.log(res)
+      // console.log(res)
       if(res.code !== 1) return  this.$message.info(res.msg)
       this.$message.info(res.msg)
       // 跳转到首页

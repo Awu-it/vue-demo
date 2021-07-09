@@ -3,13 +3,14 @@
     <div>
         <label v-if="label">{{label}}</label>
         <slot></slot>
-        <p v-if="errorMassage">{{errorMassage}}</p>
+        <p v-if="errorMassage" style="color:red">{{errorMassage}}</p>
     </div>
 </template>
 
 <script>
 import  Schema from 'async-validator'
 export default {
+    // 接受先代传来的数据
     inject:["form"],
     props: {
         label:{
@@ -26,6 +27,7 @@ export default {
         }
     },
     mounted () {
+        // 监听校验事件
          this.$on('validate',this.validate)
     },
     methods:{
@@ -35,7 +37,8 @@ export default {
             const rules = this.form.rules[this.prop]
             const desc = {[this.prop]:rules}
             const schema = new Schema(desc)
-            return schema.validate({[this.prop]:value},errors=>{
+            return schema.validate({[this.prop]:value},errors => {
+
                 if (errors) {
                     this.errorMassage = errors[0].message;
                 } else {

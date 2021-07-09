@@ -19,6 +19,7 @@ export default {
     methods:{
         onInput(e){
             this.$emit('input',e.target.value)
+            // 在父组件里触发校验
             this.$parent.$emit('validate')
         }
     }
