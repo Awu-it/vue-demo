@@ -33,10 +33,9 @@
                 </tr>
             </table>
         </div>
-        <ol>
-            <li><router-link to="/useComponents">go to "表单验证组件"</router-link></li>
-            <li><button @click="logout">清除token退出</button></li>
-        </ol> 
+        
+        <button @click="logout">清除token退出</button>
+
     </div> 
 </template>
 

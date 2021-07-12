@@ -5,6 +5,9 @@
       <router-link to="/hello/register">注册</router-link>
     </div>
     <router-view/>
+    <br>
+    <br>
+    <router-link to="/useComponents">go to "表单验证组件"</router-link>
   </div>
 </template>
 
