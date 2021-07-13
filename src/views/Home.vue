@@ -64,6 +64,7 @@ export default {
 },
 created () {
       this.getLabelList()
+    //   console.log(this.$route);
 },
 methods: {
     // 获取标签列表

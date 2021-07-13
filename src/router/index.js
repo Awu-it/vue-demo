@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Login from '../views/Login.vue'
+import Login from '../views/Login.vue'    //没使用路由懒加载，在当打包构建应用时，就被打包进去了，在访问该路由时不会再下载对应的文件了
 
 Vue.use(VueRouter)
 
@@ -16,16 +16,16 @@ const routes = [
     component: () => import('../views/Hello.vue'),
     children:[
       {
-        // hello/login    path: '/login' 以 / 开头的嵌套路径会被当作根路径。
-        path: 'login',
+        // hello/login    
+        path: 'login',   //path: '/login' 以 / 开头的嵌套路径会被当作根路径。
         name: 'Login',
-        component: Login,
+        component: Login,        
         alias: '/login'   //别名
       },
       {
         path: 'register',
         name: 'Register',
-        component: () => import('../views/Register.vue')
+        component: () => import('../views/Register.vue')   //路由懒加载的写法，当路由被访问的时候才加载对应组件
       }
     ]
   },
@@ -35,12 +35,13 @@ const routes = [
     component: () => import('../views/Home.vue'),
     meta:{
       requiredLogin:true
-    }
+    },
+    
   },
   {
     path: '/useComponents',
     name: 'UseComponents',
-    component: () => import('../views/UseComponents.vue'),
+    component: () => import('../views/UseComponents.vue')
   }
 ]
 
@@ -48,7 +49,7 @@ const router = new VueRouter({
   // 历史模式
   // mode: 'history',
   // base: process.env.BASE_URL,
-  routes
+  routes,
 })
 
 // 为路由对象，添加 beforeEach 导航守卫

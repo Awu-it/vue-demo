@@ -11,6 +11,7 @@
                   <k-input v-model="model.password" autocomplete="off" placeholder="输入密码"></k-input>
               </k-form-item>
               <k-form-item>
+                  <br>
                   <button @click="submitForm('loginForm')">提交</button>
               </k-form-item>
           </k-form>
@@ -32,8 +33,8 @@ export default {
     data() {
         return {
             model:{
-                username:'Awu',
-                password:'123456',
+                username:'',
+                password:'',
             },
            rules:{
                username:[{required:true,message:"请输入用户名"}],
