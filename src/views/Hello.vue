@@ -4,14 +4,15 @@
       <router-link to="/login">登录</router-link> |
       <router-link to="/hello/register">注册</router-link>
 
-    
       <!-- <router-link :to="{name:'Login'}">登录</router-link> |
       <router-link :to="{name:'Register'}">注册</router-link> -->
     </div>
-    <router-view/>
-    <br>
-    <br>
+    <router-view />
+    <br />
+    <br />
     <router-link to="/useComponents">go to "表单验证组件"</router-link>
+    <br />
+    <router-link to="/vuexTest">go to "Vuex任务列表案例"</router-link>
   </div>
 </template>
 
