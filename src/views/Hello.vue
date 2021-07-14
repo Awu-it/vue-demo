@@ -12,7 +12,7 @@
     <br />
     <router-link to="/useComponents">go to "表单验证组件"</router-link>
     <br />
-    <router-link to="/vuexTest">go to "Vuex任务列表案例"</router-link>
+    <router-link to="/vuexTodos">go to "Vuex任务列表案例"</router-link>
   </div>
 </template>
 
