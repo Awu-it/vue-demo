@@ -1,6 +1,6 @@
 export default {
     namespaced: true,
-    state: {
+    state:() => ({
 
         // ------------------------  Vuex 任务列表案例 -------------------
         // 所有任务列表
@@ -17,7 +17,7 @@ export default {
         nextId: 2,
         // 列表底部选中项
         viewKey: 'all'
-    },
+    }),
 
     mutations: {
         // ------------------------  Vuex 任务列表案例 -------------------

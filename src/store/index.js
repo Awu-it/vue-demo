@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import axios from 'axios'
 import todos from './modules/todos'
+import createPersistedState from 'vuex-persistedstate'  //数据持久化插件
 
 Vue.use(Vuex)
 
@@ -9,14 +10,16 @@ export default new Vuex.Store({
     modules:{
         todos
     },
-    state: {
+    state: () => ({
 
         // -------------------登录------------------
         // 存储登录信息
-        userName: sessionStorage.getItem("userName") ? sessionStorage.getItem("userName") : '',
-        token: sessionStorage.getItem("token") ? sessionStorage.getItem("token") : '',
+        // userName: sessionStorage.getItem("userName") ? sessionStorage.getItem("userName") : '',
+        // token: sessionStorage.getItem("token") ? sessionStorage.getItem("token") : '',
+        userName: '',
+        token:''
 
-    },
+    }),
 
     mutations: {
 
@@ -25,7 +28,7 @@ export default new Vuex.Store({
             state.userName = userInfo.userName
             state.token = userInfo.token
             window.sessionStorage.setItem("token", userInfo.token)
-            window.sessionStorage.setItem("userName", userInfo.userName)
+            // window.sessionStorage.setItem("userName", userInfo.userName)
         },
 
     },
@@ -43,5 +46,6 @@ export default new Vuex.Store({
             return res.msg
         }
 
-    }
+    },
+    plugins:[createPersistedState()]
 })

@@ -45,6 +45,9 @@ export default {
     ...mapState('todos',["inputValue","viewKey"]),
     ...mapGetters('todos',["unDoneLength","infolist"])
   },
+  created(){
+    // console.log(this.$store.state.todos);
+  },
   methods: {
     // 监听文本框内容变化
     handleInputChange(e) {
@@ -52,7 +55,7 @@ export default {
     },
     //向列表中添加item项
     addItemToList() {
-      console.log(this.inputValue);
+      // console.log(this.inputValue);
       if (this.inputValue.trim().length <= 0) {
         return this.$message.warning("文本框内容不能为空！");
       }
@@ -66,8 +69,8 @@ export default {
     // 监听复选框选中状态变化的事件
     cbStatusChanged(e, id) {
       // 通过 e.target.checked 可以接受到最新的选中状态
-      console.log(e.target.checked)
-      console.log(id)
+      // console.log(e.target.checked)
+      // console.log(id)
       const param = {
         id: id,
         status: e.target.checked
