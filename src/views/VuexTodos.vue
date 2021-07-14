@@ -42,24 +42,25 @@ export default {
     return {};
   },
   computed: {
-    ...mapState(["inputValue","viewKey"]),
-    ...mapGetters(["unDoneLength","infolist"])
+    ...mapState('todos',["inputValue","viewKey"]),
+    ...mapGetters('todos',["unDoneLength","infolist"])
   },
   methods: {
     // 监听文本框内容变化
     handleInputChange(e) {
-      this.$store.commit("setInputValue", e.target.value);
+      this.$store.commit("todos/setInputValue", e.target.value);
     },
     //向列表中添加item项
     addItemToList() {
+      console.log(this.inputValue);
       if (this.inputValue.trim().length <= 0) {
         return this.$message.warning("文本框内容不能为空！");
       }
-      this.$store.commit("addItem");
+      this.$store.commit("todos/addItem");
     },
     // 根据id删除对应的任务项
     removeItemById(id){
-        this.$store.commit("removeItem",id)
+        this.$store.commit("todos/removeItem",id)
     },
     
     // 监听复选框选中状态变化的事件
@@ -72,15 +73,15 @@ export default {
         status: e.target.checked
       }
 
-      this.$store.commit('changeStatus', param)
+      this.$store.commit('todos/changeStatus', param)
     },
     // 修改页面上展示的列表数据
     changeList(key){
-        this.$store.commit('changeViewKey', key)
+        this.$store.commit('todos/changeViewKey', key)
     },
     // 清除已完成的任务
     cleanDoneList() {
-      this.$store.commit('cleanDone')
+      this.$store.commit('todos/cleanDone')
     },
   },
 };
