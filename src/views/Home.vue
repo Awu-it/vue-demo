@@ -1,6 +1,8 @@
 <!-- 首页 使用了自己封装的分页组件-->
 <template>
   <div class="home">
+    <span>您好，{{$store.state.userName}}~ </span>
+    <button @click="logout">退出</button>
     <div class="label">
       <div class="labelList">
         <table border="1" class="labelTable">
@@ -48,7 +50,7 @@
       </table>
     </div>
 
-    <button @click="logout">清除token退出</button>
+    
   </div>
 </template>
 
