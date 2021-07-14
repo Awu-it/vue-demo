@@ -29,7 +29,7 @@ export default new Vuex.Store({
         // 列表底部选中项
         viewKey: 'all'
     },
-    
+
     mutations: {
 
         // -------------------登录------------------
@@ -80,8 +80,7 @@ export default new Vuex.Store({
         },
     },
     getters: {
-
-
+        
         // ------------------------  Vuex 任务列表案例 -------------------
         //统计未完成的任务条数
         unDoneLength(state) {
