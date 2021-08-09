@@ -48,6 +48,10 @@
           <td>{{ item }}</td>
         </tr>
       </table>
+      <!-- 测试数据响应 -->
+      <!-- <span>{{test}}</span>
+      <button @click="testClick">添加</button> -->
+
     </div>
 
     
@@ -63,6 +67,7 @@ export default {
   },
   data() {
     return {
+      // test:'',
       data: [],
       //   columns,
       // 选中的用户
@@ -81,6 +86,14 @@ export default {
     //   console.log(this.$route);
   },
   methods: {
+    // testClick(){
+    //   // this.test = Object.assign({},this.test, { a: 1, b: 2 })
+    //   this.test = 1
+    //   console.log(this.$el.textContent );
+    //   this.$nextTick(function () {
+    //     console.log(this.$el.textContent ) // => '已更新'
+    //   })
+    // },
     // 获取标签列表
     async getLabelList() {
       // console.log(this.queryInfo);

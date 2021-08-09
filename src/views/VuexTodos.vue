@@ -90,7 +90,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" >
 .my_ipt {
   width: 500px;
   margin: 20px 0;
@@ -108,4 +108,10 @@ export default {
   justify-content: space-between;
   align-items: center;
 }
+
+// .ant-btn{      
+//   background-color: #fff;
+// }
+
+
 </style>

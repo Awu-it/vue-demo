@@ -43,6 +43,11 @@ const routes = [
     name: 'UseComponents',
     component: () => import('../views/UseComponents.vue')
   },
+  // {
+  //   path: '/cascader',
+  //   name: 'Cascader',
+  //   component: () => import('../views/Cascader.vue')
+  // },
   {
     path: '/vuexTodos',
     name: 'VuexTodos',

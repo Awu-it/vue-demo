@@ -1,6 +1,6 @@
 <!-- 表单组件入口 -->
 <template>
-  <div>
+  <div class="k-form-demo">
     <h3>表单</h3>
     <hr />
     <k-form :model="model" :rules="rules" ref="loginForm">
@@ -20,7 +20,7 @@
       </k-form-item>
       <k-form-item>
         <br />
-        <button @click="submitForm('loginForm')">提交</button>
+        <button @click="submitForm('loginForm')" class="k-button">提交</button>
       </k-form-item>
     </k-form>
   </div>
@@ -63,5 +63,15 @@ export default {
   },
 };
 </script>
-<style lang='scss' scoped>
+<style>
+.k-form-demo {
+  background-color: red;
+}
+.k-button {
+  border: 0;
+  border-radius: 5px;
+  color: #fff;
+  background-color: #1890ff;
+  border-color: #1890ff;
+}
 </style>
